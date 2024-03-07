@@ -6,23 +6,35 @@ const $app = document.querySelector(".App");
 
 const routes = {
   "/": Home,
-  "/products/": Detail,
+  "/products/:id": Detail,
   "/cart": Cart
 };
 
 $app.innerHTML = routes["/"].template();
 
-export const changeUrl = (requestedUrl) => {
-  history.pushState(null, null, requestedUrl);
-  $app.innerHTML = routes[requestedUrl].template();
-};
+// export const changeUrl = (requestedUrl) => {
+//   history.pushState(null, null, requestedUrl);
 
-window.addEventListener("click", (e) => {
-  if (e.target.classList.contains("Product_img")) {
-    // 이미지가 클릭된 경우 
-    changeUrl("/products/");
+//   const urlSegments = requestedUrl.split('/');
+//   if (urlSegments[1] === 'products') {
+//     // '/products/:id' 형태의 URL인 경우
+//     $app.innerHTML = routes['/products/:id'].template(urlSegments[2]);
+//   } else {
+//     $app.innerHTML = routes[requestedUrl].template();
+//   }
+// };
+
+export const changeUrl = async (requestedUrl) => {
+  history.pushState(null, null, requestedUrl);
+
+  const urlSegments = requestedUrl.split('/');
+  if (urlSegments[1] === 'products') {
+    // '/products/:id' 형태의 URL인 경우
+    $app.innerHTML = await routes['/products/:id'].template(urlSegments[2]);
+  } else {
+    $app.innerHTML = await routes[requestedUrl].template();
   }
-});
+};
 
 window.addEventListener("popstate", () => {
   changeUrl(window.location.pathname);
