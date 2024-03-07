@@ -1,14 +1,16 @@
-import Detail from "./detail.js";
-import Home from "./home.js";
+import Cart from "./Cart.js"
+import Detail from "./Detail.js";
+import Home from "./Home.js";
 
 const $app = document.querySelector(".App");
 
 const routes = {
-  "/web": Home,
-  "/web/products/1": Detail,
+  "/": Home,
+  "/products/": Detail,
+  "/cart": Cart
 };
 
-$app.innerHTML = routes["/web"].template();
+$app.innerHTML = routes["/"].template();
 
 export const changeUrl = (requestedUrl) => {
   history.pushState(null, null, requestedUrl);
@@ -18,7 +20,7 @@ export const changeUrl = (requestedUrl) => {
 window.addEventListener("click", (e) => {
   if (e.target.classList.contains("Product_img")) {
     // 이미지가 클릭된 경우 
-    changeUrl("/web/products/1");
+    changeUrl("/products/");
   }
 });
 
