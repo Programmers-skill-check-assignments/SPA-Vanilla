@@ -12,18 +12,6 @@ const routes = {
 
 $app.innerHTML = routes["/"].template();
 
-// export const changeUrl = (requestedUrl) => {
-//   history.pushState(null, null, requestedUrl);
-
-//   const urlSegments = requestedUrl.split('/');
-//   if (urlSegments[1] === 'products') {
-//     // '/products/:id' 형태의 URL인 경우
-//     $app.innerHTML = routes['/products/:id'].template(urlSegments[2]);
-//   } else {
-//     $app.innerHTML = routes[requestedUrl].template();
-//   }
-// };
-
 export const changeUrl = async (requestedUrl) => {
   history.pushState(null, null, requestedUrl);
 
