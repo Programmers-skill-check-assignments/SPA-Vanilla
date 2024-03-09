@@ -19,9 +19,12 @@ export const changeUrl = async (requestedUrl) => {
   if (urlSegments[1] === 'products') {
     // '/products/:id' 형태의 URL인 경우
     $app.innerHTML = await routes['/products/:id'].template(urlSegments[2]);
+    routes['/products/:id'].addEventListener();
   } else {
     $app.innerHTML = await routes[requestedUrl].template();
+    routes[requestedUrl].addEventListener();
   }
+
 };
 
 window.addEventListener("popstate", () => {
