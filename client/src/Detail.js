@@ -1,11 +1,9 @@
 class Detail {
   addEventListener() {
     const selectElem = document.querySelector('#productOptions');
-    if (selectElem) {
-      selectElem.addEventListener('change', (e) => {
-        console.log(e.target.value);
-      })
-    }
+    selectElem.addEventListener('change', (e) => {
+      console.log(e.target.value);
+    })
   }
 
   async template(id) {
@@ -34,7 +32,13 @@ class Detail {
     <div class="ProductDetail__info">
       <h2>${detailData.name}</h2>
       <div class="ProductDetail__price">${detailData.price.toLocaleString()}원~</div>
-      <select id="productOptions"> <option>선택하세요.</option>${detailData.productOptions.map((data) => `<option ${!data.stock ? "disabled" : ""} value="${data.name}">${detailData.name} ${data.name} ${data.price ? "(+" + data.price.toLocaleString() + "원)" : ""}</option>`)}
+      <select id="productOptions"> 
+        <option>선택하세요.</option>
+        ${detailData.productOptions.map((data) => `
+        <option ${!data.stock ? "disabled" : ""} value="${data.name}">
+            ${detailData.name} ${data.name} ${data.price ? "(+" + data.price.toLocaleString() + "원)" : ""}
+        </option>
+      `)}
       </select>
       <div class="ProductDetail__selectedOptions">
         <h3>선택된 상품</h3>
