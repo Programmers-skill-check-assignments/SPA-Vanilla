@@ -24,7 +24,7 @@ class Detail {
     <div class="ProductDetail__info">
       <h2>${detailData.name}</h2>
       <div class="ProductDetail__price">${detailData.price.toLocaleString()}원~</div>
-      <select>${detailData.productOptions.map((data) => `<option>${data.name}</option>`)}
+      <select> <option>선택하세요.</option>${detailData.productOptions.map((data) => `<option ${!data.stock ? "disabled" : ""}>${detailData.name} ${data.name} ${data.price ? "(+" + data.price.toLocaleString() + "원)" : ""}</option>`)}
       </select>
       <div class="ProductDetail__selectedOptions">
         <h3>선택된 상품</h3>
