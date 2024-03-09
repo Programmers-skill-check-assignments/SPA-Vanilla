@@ -7,7 +7,7 @@ class Detail {
           method: "GET",
         });
         const json = await res.json();
-        console.log(json)
+        //console.log(json)
         return json;
       } catch (error) {
         console.log(error);
@@ -18,12 +18,12 @@ class Detail {
 
     return `
     <div class="ProductDetailPage">
-    <h1>커피잔 상품 정보</h1>
+    <h1>${detailData.name} 상품 정보</h1>
     <div class="ProductDetail">
     <img src=${detailData.imageUrl}>
     <div class="ProductDetail__info">
       <h2>${detailData.name}</h2>
-      <div class="ProductDetail__price">${detailData.price}원~</div>
+      <div class="ProductDetail__price">${detailData.price.toLocaleString()}원~</div>
       <select>${detailData.productOptions.map((data) => `<option>${data.name}</option>`)}
       </select>
       <div class="ProductDetail__selectedOptions">
@@ -42,7 +42,6 @@ class Detail {
     </div>
   </div>
 </div>
-
     `;
   }
 }
