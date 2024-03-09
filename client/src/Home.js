@@ -36,7 +36,7 @@ class Home {
         src=${data.imageUrl}>
       <div class="Product__info">
         <div>${data.name}</div>
-        <div>${data.price}</div>
+        <div>${data.price.toLocaleString()}원~</div>
       </div>
     </li>
       `).join("")}
