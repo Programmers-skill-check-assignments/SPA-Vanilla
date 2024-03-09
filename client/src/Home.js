@@ -20,7 +20,7 @@ window.addEventListener("click", (e) => {
     // 이미지가 클릭된 경우 
     const product_id = e.target.getAttribute('id');
     changeUrl(`/products/${product_id}`);
-    console.log(product_id);
+    //console.log(product_id);
   }
 });
 
