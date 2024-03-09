@@ -3,7 +3,14 @@ class Detail {
     const selectElem = document.querySelector('#productOptions');
     selectElem.addEventListener('change', (e) => {
       console.log(e.target.value);
+      const ul = document.getElementById('selectedOption');
+      const li = document.createElement('li');
+      li.textContent = e.target.value;
+      ul.appendChild(li);
     })
+
+
+
   }
 
   async template(id) {
@@ -42,7 +49,7 @@ class Detail {
       </select>
       <div class="ProductDetail__selectedOptions">
         <h3>선택된 상품</h3>
-        <ul>
+        <ul id="selectedOption">
           <li>
             커피잔 100개 번들 10,000원 <div><input type="number" value="10">개</div>
           </li>
